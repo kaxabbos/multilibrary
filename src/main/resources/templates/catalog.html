@@ -24,7 +24,7 @@
     <div class="pt-4"></div>
     <form method="post" action="/catalog/book_search">
         <div class="row">
-            <div class="col-lg-4 mt-3">
+            <div class="col-5 mt-3">
                 <div class="input-group">
                     <label for="genre" class="input-group-text">Жанр</label>
                     <select id="genre" name="genre" class="form-control">
@@ -37,19 +37,15 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <center>
-                    <!--<label for="date_range">Выберите год</label>
-                    <input class="date-range" type="text" id="date_range" name="date_range" readonly>-->
-                </center>
+            <div class="col-5" align="center">
+                <label for="date_range">Выберите год</label>
+                <input class="date-range" type="text" id="date_range" name="date_range" readonly>
                 <div class="mt-3">
-                    <!--<div id="slider_range"></div>-->
+                    <div id="slider_range"></div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <center>
-                    <button class="btn btn-lg btn-outline-success mt-2" type="submit">Поиск</button>
-                </center>
+            <div class="col-2" align="center">
+                <button class="btn btn-outline-success mt-3 w-100" type="submit">Поиск</button>
             </div>
         </div>
     </form>
@@ -75,7 +71,6 @@
 <script type="text/javascript" src="/static/catalog_script.js"></script>
 
 <hr class="clear">
-
 
 
 </body>

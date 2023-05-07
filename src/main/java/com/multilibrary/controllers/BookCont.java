@@ -72,8 +72,12 @@ public class BookCont extends Main {
     }
 
     @PostMapping("/{id}/comment_add")
-    public String comment_add(@PathVariable(value = "id") Long id, @RequestParam String comment) {
+    public String comment_add(@PathVariable(value = "id") Long id, @RequestParam String comment, @RequestParam int score) {
         repoComments.save(new Comments(id, getUser().getUsername(), DateNow(), comment));
+        Books book = repoBooks.getReferenceById(id);
+        book.setScore(book.getScore() + score);
+        book.setScoreCount(book.getScoreCount() + 1);
+        repoBooks.save(book);
         return "redirect:/book/{id}";
     }
 
@@ -93,9 +97,9 @@ public class BookCont extends Main {
                            @RequestParam("screenshots") MultipartFile[] screenshots, @RequestParam String pub,
                            @RequestParam String author, @RequestParam String isbn,
                            @RequestParam int year, @RequestParam float price, @RequestParam float weight, @RequestParam Genre genre,
-                           @RequestParam String description
+                           @RequestParam String description, @RequestParam String link
     ) throws IOException {
-        Books newBooks = new Books(name, author, pub, isbn, year, price, weight, genre, authorid);
+        Books newBooks = new Books(name, author, pub, isbn, year, price, weight, genre, authorid, link);
         BookIncome newBookIncome = new BookIncome(name, price);
 
         newBooks.setDescription(description);
@@ -169,7 +173,7 @@ public class BookCont extends Main {
             @RequestParam("screenshots") MultipartFile[] screenshots, @RequestParam String pub,
             @RequestParam String author, @RequestParam String isbn,
             @RequestParam int year, @RequestParam float price, @RequestParam float weight, @RequestParam Genre genre,
-            @RequestParam String description
+            @RequestParam String description, @RequestParam String link
     ) throws IOException {
         Books g = repoBooks.findById(id).orElseThrow();
         BookIncome bookIncome = repoBookIncome.findById(id).orElseThrow();
@@ -184,6 +188,7 @@ public class BookCont extends Main {
         bookIncome.setPrice(price);
         g.setWeight(weight);
         g.setGenre(genre);
+        g.setLink(link);
         String uuidFile = UUID.randomUUID().toString();
 
         if (poster != null && !Objects.requireNonNull(poster.getOriginalFilename()).isEmpty()) {

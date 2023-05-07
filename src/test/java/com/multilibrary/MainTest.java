@@ -96,8 +96,9 @@ public class MainTest {
         float weight = 0.3f;
         Genre genre = Genre.Бизнес;
         String description = "Some text";
+        String link = "https://www.youtube.com/";
 
-        Books book = repoBooks.save(new Books(name, author.getName(), pub, isbn, year, price, weight, genre, author.getId(), poster, screenshots, description));
+        Books book = repoBooks.save(new Books(name, author.getName(), pub, isbn, year, price, weight, genre, author.getId(), poster, screenshots, description,link));
 
         Assertions.assertNotNull(book);
 
@@ -113,6 +114,7 @@ public class MainTest {
         Assertions.assertEquals(book.getWeight(), weight);
         Assertions.assertEquals(book.getGenre(), genre);
         Assertions.assertEquals(book.getDescription(), description);
+        Assertions.assertEquals(book.getLink(), link);
 
         Assertions.assertNotNull(repoBooks.getReferenceById(book.getId()));
     }

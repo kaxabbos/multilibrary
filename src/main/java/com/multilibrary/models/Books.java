@@ -21,6 +21,7 @@ public class Books {
     private String description;
 
     private String poster;
+    private String link;
     private String[] screenshots;
 
     private int year;
@@ -28,13 +29,14 @@ public class Books {
     private float price, weight;
 
     private Genre genre;
-
+    private int score;
+    private int scoreCount;
     public Books() {
     }
 
     public Books(
             String name, String author, String pub, String isbn,
-            int year, float price, float weight, Genre genre, long authorid
+            int year, float price, float weight, Genre genre, long authorid, String link
     ) {
         this.name = name;
         this.author = author;
@@ -45,12 +47,15 @@ public class Books {
         this.weight = weight;
         this.genre = genre;
         this.authorid = authorid;
+        this.link = link;
+        score = 0;
+        scoreCount = 0;
     }
 
     public Books(
             String name, String author, String pub, String isbn,
             int year, float price, float weight, Genre genre, long authorid,
-            String poster, String[] screenshots, String description
+            String poster, String[] screenshots, String description,String link
     ) {
         this.name = name;
         this.author = author;
@@ -64,6 +69,31 @@ public class Books {
         this.poster = poster;
         this.screenshots = screenshots;
         this.description = description;
+        this.link = link;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScoreCount() {
+        return scoreCount;
+    }
+
+    public void setScoreCount(int scoreCount) {
+        this.scoreCount = scoreCount;
     }
 
     public long getAuthorid() {

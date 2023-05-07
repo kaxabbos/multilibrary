@@ -21,13 +21,13 @@
         </div>
         <div class="col-lg-4 mb-3">
             <img class="poster-book w-100" th:attr="src=${'/img/' + author.poster}">
-            <div th:if="${userid} or ${role == 'ADMIN'}" class="btn-group mt-3">
+            <div th:if="${userid or role == 'ADMIN'}" class="btn-group mt-3">
                 <a th:href="'/author/' + ${author.id} + '/edit'" class="btn btn-success">Редактировать</a>
             </div>
-            <div th:if="${userid} or ${role == 'ADMIN'}" class="btn-group mt-3">
+            <div th:if="${userid or role == 'ADMIN'}" class="btn-group mt-3">
                 <a th:href="'/author/' + ${author.id} + '/delete'" class="btn btn-danger">Удалить</a>
             </div>
-            <div th:if="${role == 'ADMIN' || role == 'PUB'}" class="btn-group mt-3">
+            <div th:if="${role == 'ADMIN' or userid}" class="btn-group mt-3">
                 <a th:href="'/book/add/' + ${author.id} + '/'" class="btn btn-primary">Добавить книгу</a>
             </div>
         </div>

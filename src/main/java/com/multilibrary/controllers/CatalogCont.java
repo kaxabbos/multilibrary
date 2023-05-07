@@ -25,24 +25,19 @@ public class CatalogCont extends Main {
     }
 
     @PostMapping("/catalog/book_search")
-    public String catalog_search(@RequestParam Genre genre,
-/*                                 @RequestParam String date_range, */
-                                 Model model) {
+    public String catalog_search(Model model, @RequestParam Genre genre, @RequestParam String date_range) {
         List<Books> books = repoBooks.findAllByGenre(genre);
 
-  /*      String[] date = date_range.split(" ");
-        int with = Integer.parseInt(date[0]), before = Integer.parseInt(date[2]);*/
+        String[] date = date_range.split(" ");
+        int with = Integer.parseInt(date[0]), before = Integer.parseInt(date[2]);
+        List<Books> res = new ArrayList<>();
+        for (Books g : books) {
+            if (with <= g.getYear() && g.getYear() <= before) {
+                res.add(g);
+            }
+        }
 
-//        List<Books> res = new ArrayList<>();
-//        for (Books g : books) {
-//            System.out.println("1 " + g.getYear());
-//            //        if (with <= g.getYear() && g.getYear() <= before) {
-//                res.add(g);
-//                System.out.println("2 " + g.getYear());
-//          //  }
-//        }
-
-        model.addAttribute("books", books);
+        model.addAttribute("books", res);
         model.addAttribute("role", getRole());
         return "catalog";
     }
