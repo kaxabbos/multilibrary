@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html class="h-100" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Мы на карте</title>
+    <link rel="stylesheet" href="/static/about_style.css">
+</head>
+
+<head th:insert="blocks\head :: head"></head>
+
+<body class="d-flex flex-column h-100" style="background: url(&quot;/img/def/bg.jpg&quot;) top / cover;">
+
+<header th:insert="blocks\header :: header" class="sticky-top" role="navigation"></header>
+
+<hr class="clear">
+
+<main class="container flex-shrink-0 bg-light">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pt-5 px-5 mx-auto">
+                <center><h2>MultiLibrary</h2></center>
+                <div class="row">
+                    <div class="col-12" align="center">
+                        <iframe allowfullscreen="" frameborder="0" loading="lazy"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGz6HJDVY9fht_jGVCprEpRCwZ8PSsqhc&amp;q=Minsk&amp;zoom=11"
+                                width="75%" height="600"
+                                style="box-shadow: 0px 0px 6px;border-radius: 5px;border: 1px solid rgb(255,255,255);width: 100%;margin-top: 15px;height: 500px;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pt-5"></div>
+</main>
+
+<hr class="clear">
+
+
+
+</body>
+
+</html>

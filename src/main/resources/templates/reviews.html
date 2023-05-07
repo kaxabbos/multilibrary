@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html class="h-100" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Консультация</title>
+    <link rel="stylesheet" href="/static/about_style.css">
+</head>
+
+<head th:insert="blocks\head :: head"></head>
+
+<body class="d-flex flex-column h-100" style="background: url(&quot;/img/def/bg.jpg&quot;) top / cover;">
+
+<header th:insert="blocks\header :: header" class="sticky-top" role="navigation"></header>
+
+<hr class="clear">
+
+<main class="container flex-shrink-0 bg-light">
+    <div class="row">
+        <div th:if="${role == 'USER'}" class="col-12 mt-3">
+            <form action="/reviews/add" method="post">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="text" class="form-control" placeholder="Введите текст...">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="tel" class="form-control" placeholder="Введите телефон...">
+                    </div>
+                    <div class="col-auto"><button class="btn btn-primary">Добавить</button></div>
+                </div>
+            </form>
+        </div>
+        <div th:each="i : ${reviews}" class="col-12 mt-2">
+            <p class="lead" th:text="${i.owner.username + ' | ' + i.tel + ' | ' + i.date}"></p>
+            <p th:text="${i.text}"></p>
+            <hr>
+        </div>
+    </div>
+    <div class="pt-5"></div>
+</main>
+
+<hr class="clear">
+
+
+
+</body>
+
+</html>
