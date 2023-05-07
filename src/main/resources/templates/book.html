@@ -48,7 +48,8 @@
                                            th:href="'/catalog/genre/' + ${book.genre}"></a></span>
                 </div>
                 <div><b>Издатель: </b><span th:text="${book.pub}"></span></div>
-                <div><b>Автор: </b><a th:href="'/author/' + ${book.authorid} + '/'"><span th:text="${book.author}"></span></a></div>
+                <div><b>Автор: </b><a th:href="'/author/' + ${book.authorid} + '/'"><span
+                        th:text="${book.author}"></span></a></div>
                 <div><b>ISBN: </b><span th:text="${book.isbn}"></span></div>
                 <div><b>Цена: </b><span th:text="${book.price}"></span> $</div>
                 <div><b>Вес: </b><span th:text="${book.weight}"></span></div>
@@ -60,12 +61,12 @@
         </div>
         <div class="col-lg-12 mt-3">
             <h4>Фотография</h4>
-            <center>
-                <div th:each="i : ${book.screenshots}">
+            <div class="row">
+                <div class="col-4" th:each="i : ${book.screenshots}">
                     <img class="poster-book my-2" th:attr="src=${'/img/' + i}">
                 </div>
                 <hr class="clear">
-            </center>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -73,9 +74,8 @@
             <form th:action="'/book/' + ${book.id} + '/comment_add/'" method="post">
                 <h4>Отзывы</h4>
                 <div class="alert alert-success">
-                    <input type="text" id="date" name="date" hidden readonly>
-                    <textarea placeholder="Добавить отзыв..." class="form-control" name="comment" id="comment"
-                              required></textarea>
+                    <input placeholder="Добавить отзыв..." class="form-control" name="comment" id="comment"
+                              required>
                     <div class="btn-group mt-2">
                         <button class="btn btn-success" type="submit">Добавить отзыв</button>
                         <button class="btn btn-success" type="reset">Очистить</button>
@@ -98,10 +98,7 @@
     <div class="pt-5"></div>
 </main>
 
-<script type="text/javascript" src="/static/book_script.js"></script>
-
 <hr class="clear">
-
 
 
 </body>

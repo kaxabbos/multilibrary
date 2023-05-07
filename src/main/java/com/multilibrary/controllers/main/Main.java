@@ -1,6 +1,5 @@
-package com.multilibrary.controllers;
+package com.multilibrary.controllers.main;
 
-import com.multilibrary.models.Books;
 import com.multilibrary.models.Users;
 import com.multilibrary.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,29 +10,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Main {
-
     @Autowired
-    RepoUsers repoUsers;
-
+    protected RepoUsers repoUsers;
     @Autowired
-    RepoBooks repoBooks;
-
+    protected RepoBooks repoBooks;
     @Autowired
-    RepoComments repoComments;
-
+    protected RepoComments repoComments;
     @Autowired
-    RepoBookIncome repoBookIncome;
-
+    protected RepoBookIncome repoBookIncome;
     @Autowired
-    RepoAuthor repoAuthor;
+    protected RepoAuthor repoAuthor;
     @Autowired
-    RepoReviews repoReviews;
-
+    protected RepoReviews repoReviews;
     @Value("${upload.path}")
-    String uploadPath;
+    protected String uploadPath;
 
 
     protected Users getUser() {
@@ -51,7 +43,7 @@ public class Main {
         return users.getRole().toString();
     }
 
-    public String DateNow() {
+    protected String DateNow() {
         return LocalDateTime.now().toString().substring(0, 10);
     }
 }

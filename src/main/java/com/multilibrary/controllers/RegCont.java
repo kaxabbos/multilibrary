@@ -1,5 +1,6 @@
 package com.multilibrary.controllers;
 
+import com.multilibrary.controllers.main.Main;
 import com.multilibrary.models.Users;
 import com.multilibrary.models.enums.Role;
 import org.springframework.stereotype.Controller;
@@ -9,17 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class LoginRegCont extends Main {
-
-    /*  login   */
-
-    @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("role", getRole());
-        return "login";
-    }
-
-    /*  reg   */
+public class RegCont extends Main {
 
     @GetMapping("/reg")
     public String reg(Model model) {

@@ -1,5 +1,6 @@
 package com.multilibrary.controllers;
 
+import com.multilibrary.controllers.main.Main;
 import com.multilibrary.models.Reviews;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/reviews")
-public class ReviewsCont extends Main{
+public class ReviewsCont extends Main {
 
     @GetMapping
     public String Reviews(Model model) {
